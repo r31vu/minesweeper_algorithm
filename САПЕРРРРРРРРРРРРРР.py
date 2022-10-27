@@ -20,49 +20,25 @@ for i in range(number_of_bombs):
     bombs_list.append(bomb_coord)
 for elem in bombs_list:
     matrix[elem[0]][elem[1]] = symbol_of_bomb
-if number_of_bombs > (size_x * size_y) // 2:
-    print(f'{Fore.RED}> {Fore.RESET} Бомб {Fore.RED} больше чем чистых клеток{Fore.RESET}.')
-    for coordinate in coordinates_list:
-        y, x = coordinate
-        counter = 0
-        if y != 0 and matrix[y - 1][x] == symbol_of_bomb:
-            counter += 1
-        if x != 0 and matrix[y][x - 1] == 'X':
-            counter += 1
-        if y + 1 != size_y and matrix[y + 1][x] == symbol_of_bomb:
-            counter += 1
-        if x + 1 != size_x and matrix[y][x + 1] == symbol_of_bomb:
-            counter += 1
-        if x + 1 != size_x and y + 1 != size_y and matrix[y + 1][x + 1] == symbol_of_bomb:
-            counter += 1
-        if x != 0 and y != 0 and matrix[y - 1][x - 1] == 'X':
-            counter += 1
-        if x != 0 and y + 1 != size_y and matrix[y + 1][x - 1] == symbol_of_bomb:
-            counter += 1
-        if x + 1 != size_x and y != 0 and matrix[y - 1][x + 1] == symbol_of_bomb:
-            counter += 1
-        matrix[y][x] = counter
-else:
-    print(f'{Fore.GREEN}> {Fore.RESET} Бомб {Fore.GREEN} меньше чем чистых клеток{Fore.RESET}.')
-    for coordinate in bombs_list:
-        y, x = coordinate
-        counter = 0
-        if y != 0 and matrix[y - 1][x] != symbol_of_bomb:
-            matrix[y - 1][x] += 1
-        if x != 0 and matrix[y][x - 1] != symbol_of_bomb:
-            matrix[y][x - 1] += 1
-        if y + 1 != size_y and matrix[y + 1][x] != symbol_of_bomb:
-            matrix[y + 1][x] += 1
-        if x + 1 != size_x and matrix[y][x + 1] != symbol_of_bomb:
-            matrix[y][x + 1] += 1
-        if x + 1 != size_x and y + 1 != size_y and matrix[y + 1][x + 1] != symbol_of_bomb:
-            matrix[y + 1][x + 1] += 1
-        if x != 0 and y != 0 and matrix[y - 1][x - 1] != symbol_of_bomb:
-            matrix[y - 1][x - 1] += 1
-        if x != 0 and y + 1 != size_y and matrix[y + 1][x - 1] != symbol_of_bomb:
-            matrix[y + 1][x - 1] += 1
-        if x + 1 != size_x and y != 0 and matrix[y - 1][x + 1] != symbol_of_bomb:
-            matrix[y - 1][x + 1] += 1
+for coordinate in bombs_list:
+    y, x = coordinate
+    counter = 0
+    if y != 0 and matrix[y - 1][x] != symbol_of_bomb:
+        matrix[y - 1][x] += 1
+    if x != 0 and matrix[y][x - 1] != symbol_of_bomb:
+        matrix[y][x - 1] += 1
+    if y + 1 != size_y and matrix[y + 1][x] != symbol_of_bomb:
+        matrix[y + 1][x] += 1
+    if x + 1 != size_x and matrix[y][x + 1] != symbol_of_bomb:
+        matrix[y][x + 1] += 1
+    if x + 1 != size_x and y + 1 != size_y and matrix[y + 1][x + 1] != symbol_of_bomb:
+        matrix[y + 1][x + 1] += 1
+    if x != 0 and y != 0 and matrix[y - 1][x - 1] != symbol_of_bomb:
+        matrix[y - 1][x - 1] += 1
+    if x != 0 and y + 1 != size_y and matrix[y + 1][x - 1] != symbol_of_bomb:
+        matrix[y + 1][x - 1] += 1
+    if x + 1 != size_x and y != 0 and matrix[y - 1][x + 1] != symbol_of_bomb:
+        matrix[y - 1][x + 1] += 1
 print(f'\n{Fore.GREEN}> {Fore.RESET}Результат {Fore.RESET}генерации: \n')
 print(f'\n{"    " * size_x}\n'.join(
     [f'  {Fore.LIGHTCYAN_EX}' + f'{Fore.RESET}     {Fore.LIGHTCYAN_EX}'.join([str(elem) for elem in __]) for __ in
